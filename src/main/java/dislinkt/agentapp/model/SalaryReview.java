@@ -20,6 +20,14 @@ public class SalaryReview {
     @Column(name="position")
     private String position;
 
+    @Column(name="seniority")
+    @Enumerated(EnumType.STRING)
+    private Seniority seniority;
+
     @Column(name="monthlySalaryEur")
     private double monthlySalaryEur;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

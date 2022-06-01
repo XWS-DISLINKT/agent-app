@@ -22,6 +22,10 @@ public class Job {
     @Column(name="position")
     private String position;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     @Column(name="seniority")
     @Enumerated(EnumType.STRING)
     private Seniority seniority;
