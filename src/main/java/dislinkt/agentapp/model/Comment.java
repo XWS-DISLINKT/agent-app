@@ -15,19 +15,23 @@ import java.time.LocalDateTime;
 public class Comment {
 
     @Id
-    @GeneratedValue
-    @Column(nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false, unique = true)
     private Integer id;
 
     @ManyToOne(targetEntity = User.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private User author;
 
+    @Column(name="rating")
     private int rating;
 
+    @Column(name="title")
     private String title;
 
+    @Column(name="content")
     private String content;
 
+    @Column(name="datePosted", columnDefinition = "TIMESTAMP")
     private LocalDateTime datePosted;
 
 }

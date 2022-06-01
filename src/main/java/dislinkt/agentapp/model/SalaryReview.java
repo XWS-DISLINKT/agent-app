@@ -13,11 +13,13 @@ import javax.persistence.*;
 @Table(name = "salaryReviews")
 public class SalaryReview {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false, unique = true)
     private Integer id;
 
+    @Column(name="position")
     private String position;
 
+    @Column(name="monthlySalaryEur")
     private double monthlySalaryEur;
 }

@@ -46,13 +46,4 @@ public class Company {
     @Column(name="location")
     private String location;
 
-    @OneToMany()
-    private List<Comment> comments;
-    @OneToMany()
-    private List<SalaryReview> salaryReviews;
-    @OneToMany()
-    private List<InterviewReview> interviewReviews;
-    @OneToMany()
-    private List<Job> jobs;
-
 }

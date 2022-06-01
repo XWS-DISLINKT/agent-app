@@ -19,15 +19,23 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name="position")
     private String position;
 
+    @Column(name="seniority")
+    @Enumerated(EnumType.STRING)
     private Seniority seniority;
 
+    @Column(name="location")
     private String location;
 
+    @Column(name="description")
     private String description;
 
+    @Column(name="closingDate", columnDefinition = "TIMESTAMP")
     private LocalDateTime closingDate;
 
+    @Column(name="technologies")
+    @ElementCollection(targetClass=String.class)
     private List<String> technologies;
 }
