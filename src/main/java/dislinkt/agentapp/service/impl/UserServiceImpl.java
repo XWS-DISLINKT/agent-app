@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     public User register(BasicUserRegistration basicUserRegistration) {
         var user = BasicUserRegistrationMapper.map(basicUserRegistration);
         user.setPassword(passwordEncoder.encode(basicUserRegistration.getPassword()));
-        user.setRoles(roleRepository.findByName(basicUserRegistration.getRole()));
+        user.setRoles(roleRepository.findByName("ROLE_CLIENT"));
         return userRepository.save(user);
     }
 
