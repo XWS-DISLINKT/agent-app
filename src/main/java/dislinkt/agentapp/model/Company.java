@@ -23,7 +23,8 @@ public class Company {
     private String name;
 
     @Column(name="employeesNumberRange")
-    private String employeesNumberRange;
+    @Enumerated(EnumType.STRING)
+    private EmployeesNumberRange employeesNumberRange;
 
     @Column(name="industry")
     private String industry;
