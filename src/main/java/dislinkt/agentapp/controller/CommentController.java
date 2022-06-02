@@ -1,5 +1,6 @@
 package dislinkt.agentapp.controller;
 
+import dislinkt.agentapp.dto.CommentDTO;
 import dislinkt.agentapp.dto.NewCommentDTO;
 import dislinkt.agentapp.model.Comment;
 import dislinkt.agentapp.service.CommentService;
@@ -16,15 +17,14 @@ import java.util.List;
 public class CommentController {
     private final CommentService commentService;
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("")
-    public List<Comment> getAllComments() {
-        return commentService.getAllComments();
+    @GetMapping("/company/{companyId}")
+    public List<CommentDTO> getAllCommentsForCompany(@PathVariable int companyId) {
+        return commentService.getAllCommentsForCompany(companyId);
     }
 
     @PreAuthorize("hasRole('ROLE_CLIENT')")
     @PostMapping("")
-    public Comment createComment(@RequestBody NewCommentDTO comment, Principal user) {
+    public CommentDTO createComment(@RequestBody NewCommentDTO comment, Principal user) {
         return commentService.createComment(comment, user.getName());
     }
 }

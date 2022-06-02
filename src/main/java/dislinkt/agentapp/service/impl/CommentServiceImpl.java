@@ -1,5 +1,6 @@
 package dislinkt.agentapp.service.impl;
 
+import dislinkt.agentapp.dto.CommentDTO;
 import dislinkt.agentapp.dto.NewCommentDTO;
 import dislinkt.agentapp.model.Comment;
 import dislinkt.agentapp.model.Company;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,12 +26,17 @@ public class CommentServiceImpl implements CommentService {
     private final CompanyService companyService;
 
     @Override
-    public List<Comment> getAllComments() {
-        return commentRepository.findAll();
+    public List<CommentDTO> getAllCommentsForCompany(int companyId) {
+        List<Comment> comments = commentRepository.getByCompanyId(companyId);
+        List<CommentDTO> commentsDto = new ArrayList<>();
+        for (Comment c: comments) {
+            commentsDto.add(new CommentDTO(c));
+        }
+        return commentsDto;
     }
 
     @Override
-    public Comment createComment(NewCommentDTO commentDto, String userEmail) {
+    public CommentDTO createComment(NewCommentDTO commentDto, String userEmail) {
         User user = userService.findByEmail(userEmail);
         Company company = companyService.getCompany(commentDto.getCompanyId());
         Comment newComment = Comment.builder()
@@ -41,6 +48,6 @@ public class CommentServiceImpl implements CommentService {
                 .rating(commentDto.getRating())
                 .build();
         commentRepository.save(newComment);
-        return newComment;
+        return new CommentDTO(newComment);
     }
 }

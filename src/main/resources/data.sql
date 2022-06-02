@@ -5,7 +5,7 @@ INSERT INTO roles (name) VALUES ('ROLE_ADMIN'),
 --COMPANIES
 INSERT INTO companies (id, email, employees_number_range, industry, location, name, phone_number, is_approved, about) VALUES
     (1, 'support@company.com', 3, 'Energy', 'Novi Sad', 'Schneider Electric', '+1354312413132', true, 'long string'),
-    (2, 'support@company.com', 5, 'Software Outsourcing', 'Beograd', 'Software Engineering Lab', '+1354312413132', false, 'long string'),
+    (2, 'support@company.com', 5, 'Software Outsourcing', 'Beograd', 'Software Engineering Lab', '+1354312413132', true, 'long string'),
     (3, 'support@company.com', 4, 'IT', 'Novi Sad', 'Continental', '+1354312413132', false, 'long string');
 
 
