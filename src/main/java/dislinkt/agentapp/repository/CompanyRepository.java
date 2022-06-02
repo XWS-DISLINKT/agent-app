@@ -11,4 +11,7 @@ import java.util.List;
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
     @Query("SELECT c FROM Company c WHERE c.isApproved = false")
     List<Company> getUnapprovedCompanies();
+
+    @Query("SELECT c FROM Company c WHERE c.isApproved = true")
+    List<Company> getApprovedCompanies();
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "companies")
 public class Company {
     @Id
-    @Column(name="id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -23,7 +23,6 @@ public class Company {
     private String name;
 
     @Column(name="employeesNumberRange")
-    @Enumerated(EnumType.STRING)
     private EmployeesNumberRange employeesNumberRange;
 
     @Column(name="industry")
@@ -37,9 +36,6 @@ public class Company {
 
     @Column(name="about")
     private String about;
-
-    @Column(name="rating")
-    private double rating;
 
     @Column(name="isApproved")
     private boolean isApproved;
