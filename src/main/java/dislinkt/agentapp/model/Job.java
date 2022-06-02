@@ -1,17 +1,20 @@
 package dislinkt.agentapp.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "jobs")
 public class Job {
     @Id
@@ -37,9 +40,12 @@ public class Job {
     private String description;
 
     @Column(name="closingDate", columnDefinition = "TIMESTAMP")
-    private LocalDateTime closingDate;
+    private Date closingDate;
 
+    /*
     @Column(name="technologies")
     @ElementCollection(targetClass=String.class)
     private List<String> technologies;
+    */
+
 }
