@@ -29,4 +29,12 @@ public class CompanyServiceImpl implements CompanyService {
         }
         return companiesDto;
     }
+
+    @Override
+    public CompanyDTO getCompanyById(int id) {
+        Company company = companyRepository.findById(id).orElse(null);
+        if(company == null || !company.isApproved())
+            return null;
+        return new CompanyDTO(company, 0.0);
+    }
 }
