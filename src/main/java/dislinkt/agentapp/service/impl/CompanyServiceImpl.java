@@ -3,6 +3,7 @@ package dislinkt.agentapp.service.impl;
 import dislinkt.agentapp.dto.CompanyDTO;
 import dislinkt.agentapp.model.Company;
 import dislinkt.agentapp.repository.CompanyRepository;
+import dislinkt.agentapp.service.CommentService;
 import dislinkt.agentapp.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
+    private final CommentService commentService;
     @Override
     public List<Company> getUnapprovedCompanies() {
         return companyRepository.getUnapprovedCompanies();
@@ -25,7 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
         List<Company> companies = companyRepository.getApprovedCompanies();
         List<CompanyDTO> companiesDto = new ArrayList<>();
         for (Company c : companies) {
-            companiesDto.add(new CompanyDTO(c, 0.0));
+            companiesDto.add(new CompanyDTO(c, commentService.getAvarageRating(c.getId())));
         }
         return companiesDto;
     }
@@ -35,14 +37,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = companyRepository.findById(id).orElse(null);
         if(company == null || !company.isApproved())
             return null;
-        return new CompanyDTO(company, 0.0);
+        return new CompanyDTO(company, commentService.getAvarageRating(company.getId()));
     }
 
-    @Override
-    public Company getCompany(int id) {
-        Company company = companyRepository.findById(id).orElse(null);
-        if(company == null || !company.isApproved())
-            return null;
-        return company;
-    }
 }

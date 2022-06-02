@@ -8,6 +8,10 @@ import dislinkt.agentapp.model.Comment;
 import java.util.List;
 
 public interface CommentService {
+
     List<CommentDTO> getAllCommentsForCompany(int companyId);
+
     CommentDTO createComment(NewCommentDTO comment, String userEmail);
+
+    double getAvarageRating(int companyId);
 }

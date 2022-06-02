@@ -6,6 +6,7 @@ import dislinkt.agentapp.model.Comment;
 import dislinkt.agentapp.model.Company;
 import dislinkt.agentapp.model.User;
 import dislinkt.agentapp.repository.CommentRepository;
+import dislinkt.agentapp.repository.CompanyRepository;
 import dislinkt.agentapp.service.CommentService;
 import dislinkt.agentapp.service.CompanyService;
 import dislinkt.agentapp.service.UserService;
@@ -22,8 +23,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
+    private final CompanyRepository companyRepository;
     private final UserService userService;
-    private final CompanyService companyService;
 
     @Override
     public List<CommentDTO> getAllCommentsForCompany(int companyId) {
@@ -38,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CommentDTO createComment(NewCommentDTO commentDto, String userEmail) {
         User user = userService.findByEmail(userEmail);
-        Company company = companyService.getCompany(commentDto.getCompanyId());
+        Company company = companyRepository.findById(commentDto.getCompanyId()).orElse(null);
         Comment newComment = Comment.builder()
                 .author(user)
                 .company(company)
@@ -49,5 +50,19 @@ public class CommentServiceImpl implements CommentService {
                 .build();
         commentRepository.save(newComment);
         return new CommentDTO(newComment);
+    }
+
+    @Override
+    public double getAvarageRating(int companyId) {
+        List<Comment> comments = commentRepository.getByCompanyId(companyId);
+        double sum = 0;
+        int i = 0;
+        for (Comment c : comments) {
+            sum += c.getRating();
+            i++;
+        }
+        if (sum == 0)
+            return 0.0;
+        return sum/i;
     }
 }
