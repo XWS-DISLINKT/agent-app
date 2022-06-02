@@ -27,9 +27,4 @@ public class CommentController {
     public CommentDTO createComment(@RequestBody NewCommentDTO comment, Principal user) {
         return commentService.createComment(comment, user.getName());
     }
-
-    /*@GetMapping("/rating/{companyId}")
-    public double getAvarageRating(@PathVariable int companyId) {
-        return commentService.getAvarageRating(companyId);
-    }*/
 }

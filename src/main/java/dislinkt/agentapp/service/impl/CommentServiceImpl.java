@@ -8,13 +8,10 @@ import dislinkt.agentapp.model.User;
 import dislinkt.agentapp.repository.CommentRepository;
 import dislinkt.agentapp.repository.CompanyRepository;
 import dislinkt.agentapp.service.CommentService;
-import dislinkt.agentapp.service.CompanyService;
 import dislinkt.agentapp.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

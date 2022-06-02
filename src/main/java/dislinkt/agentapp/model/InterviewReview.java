@@ -1,16 +1,19 @@
 package dislinkt.agentapp.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "interviewReviews")
 public class InterviewReview {
     @Id
@@ -29,7 +32,7 @@ public class InterviewReview {
     private int rating;
 
     @Column(name="difficulty")
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @Column(name="selectionProcessDurationInWeeks")
@@ -45,5 +48,5 @@ public class InterviewReview {
     private String technicalInterview;
 
     @Column(name="datePosted", columnDefinition = "TIMESTAMP")
-    private LocalDateTime datePosted;
+    private Date datePosted;
 }
