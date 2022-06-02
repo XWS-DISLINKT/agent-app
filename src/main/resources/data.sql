@@ -9,7 +9,6 @@ INSERT INTO companies (id, email, employees_number_range, industry, location, na
     (3, 'support@company.com', 4, 'IT', 'Novi Sad', 'Continental', '+1354312413132', false, 'long string');
 
 
-
 --USERS
 INSERT INTO users (id, email, password, company_id) VALUES
     (4, 'owner@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', 1);
@@ -22,3 +21,8 @@ INSERT INTO users_roles (user_id, roles_id) VALUES (1, 1),
                                                    (2, 2),
                                                    (3, 2),
                                                    (4, 3);
+
+
+INSERT INTO comments (id, rating, author_id, company_id, date_posted, title, content) VALUES
+    (101, 3, 2, 1, DATE '2022-05-27', 'title1', 'cont1'),
+    (102, 4, 3, 1, DATE '2022-05-21', 'title2', 'cont2');

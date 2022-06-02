@@ -1,16 +1,19 @@
 package dislinkt.agentapp.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "comments")
 public class Comment {
 
@@ -37,6 +40,6 @@ public class Comment {
     private String content;
 
     @Column(name="datePosted", columnDefinition = "TIMESTAMP")
-    private LocalDateTime datePosted;
+    private Date datePosted;
 
 }
