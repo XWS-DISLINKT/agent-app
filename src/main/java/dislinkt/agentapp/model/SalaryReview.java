@@ -21,7 +21,7 @@ public class SalaryReview {
     private String position;
 
     @Column(name="seniority")
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private Seniority seniority;
 
     @Column(name="monthlySalaryEur")

@@ -17,7 +17,7 @@ public class InterviewReviewDTO {
     private int companyId;
     private int rating;
     private Difficulty difficulty;
-    //private double selectionProcessDurationInWeeks;
+    private double selectionProcessDurationInWeeks;
     private String title;
     private String hrInterview;
     private String technicalInterview;
@@ -29,6 +29,7 @@ public class InterviewReviewDTO {
         companyId = ir.getCompany().getId();
         rating = ir.getRating();
         difficulty = ir.getDifficulty();
+        selectionProcessDurationInWeeks = ir.getSelectionProcessDurationInWeeks();
         title = ir.getTitle();
         hrInterview = ir.getHrInterview();
         technicalInterview = ir.getTechnicalInterview();

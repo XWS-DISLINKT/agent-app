@@ -13,7 +13,7 @@ import java.util.Date;
 public class JobDTO {
     private Integer id;
     private String position;
-    private int companyId;
+    private String companyName;
     private Seniority seniority;
     private String location;
     private String description;
@@ -22,7 +22,7 @@ public class JobDTO {
     public JobDTO(Job job){
         id = job.getId();
         position = job.getPosition();
-        companyId = job.getCompany().getId();
+        companyName = job.getCompany().getName();
         seniority = job.getSeniority();
         location = job.getLocation();
         description = job.getDescription();

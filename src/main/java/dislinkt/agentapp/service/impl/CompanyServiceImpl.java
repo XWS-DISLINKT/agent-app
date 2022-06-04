@@ -24,8 +24,13 @@ public class CompanyServiceImpl implements CompanyService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     @Override
-    public List<Company> getUnapprovedCompanies() {
-        return companyRepository.getUnapprovedCompanies();
+    public List<CompanyDTO> getUnapprovedCompanies() {
+        List<Company> companies = companyRepository.getUnapprovedCompanies();
+        List<CompanyDTO> companiesDto = new ArrayList<>();
+        for (Company c : companies) {
+            companiesDto.add(new CompanyDTO(c, commentService.getAvarageRating(c.getId())));
+        }
+        return companiesDto;
     }
 
     @Override

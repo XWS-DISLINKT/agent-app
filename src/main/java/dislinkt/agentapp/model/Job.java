@@ -30,7 +30,7 @@ public class Job {
     private Company company;
 
     @Column(name="seniority")
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private Seniority seniority;
 
     @Column(name="location")

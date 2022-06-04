@@ -1,5 +1,5 @@
 package dislinkt.agentapp.model;
 
 public enum Difficulty {
-    EASY, AVERAGE, HARD
+    EASY, MEDIUM, HARD
 }

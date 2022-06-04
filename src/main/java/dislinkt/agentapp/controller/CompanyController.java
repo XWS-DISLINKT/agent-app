@@ -20,7 +20,7 @@ public class CompanyController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping ("/unapproved")
-    public List<Company> getUnapprovedCompanies() {
+    public List<CompanyDTO> getUnapprovedCompanies() {
         return companyService.getUnapprovedCompanies();
     }
 
@@ -28,6 +28,7 @@ public class CompanyController {
     public List<CompanyDTO> getAllApprovedCompanies() {
         return companyService.getApprovedCompanies();
     }
+
     @GetMapping ("/{id}")
     public CompanyDTO getCompanyById(@PathVariable int id) {
         return companyService.getCompanyById(id);
