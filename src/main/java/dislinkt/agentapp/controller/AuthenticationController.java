@@ -2,6 +2,7 @@ package dislinkt.agentapp.controller;
 
 import dislinkt.agentapp.dto.BasicUserRegistration;
 import dislinkt.agentapp.dto.JwtAuthenticationDTO;
+import dislinkt.agentapp.dto.UserDTO;
 import dislinkt.agentapp.exception.ResourceConflictException;
 import dislinkt.agentapp.model.User;
 import dislinkt.agentapp.security.config.TokenUtils;
@@ -63,7 +64,9 @@ public class AuthenticationController {
     }
 
     @GetMapping()
-    public User user(Principal user) {
-        return this.userService.findByEmail(user.getName());
+    public UserDTO user(Principal user) {
+        if (user == null)
+            return null;
+        return this.userService.getLoggedInUser(user.getName());
     }
 }

@@ -1,13 +1,10 @@
 package dislinkt.agentapp.service.impl;
 
-import dislinkt.agentapp.dto.InterviewReviewDTO;
 import dislinkt.agentapp.dto.JobDTO;
 import dislinkt.agentapp.dto.NewJobDTO;
 import dislinkt.agentapp.model.Company;
-import dislinkt.agentapp.model.InterviewReview;
 import dislinkt.agentapp.model.Job;
 import dislinkt.agentapp.model.User;
-import dislinkt.agentapp.repository.CompanyRepository;
 import dislinkt.agentapp.repository.JobRepository;
 import dislinkt.agentapp.service.JobService;
 import dislinkt.agentapp.service.UserService;
@@ -21,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 public class JobServiceImpl implements JobService {
     private final JobRepository jobRepository;
-    private final CompanyRepository companyRepository;
     private final UserService userService;
     @Override
     public List<JobDTO> getAllJobsForCompany(int companyId) {

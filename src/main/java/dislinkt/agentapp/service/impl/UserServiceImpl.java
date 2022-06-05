@@ -1,6 +1,7 @@
 package dislinkt.agentapp.service.impl;
 
 import dislinkt.agentapp.dto.BasicUserRegistration;
+import dislinkt.agentapp.dto.UserDTO;
 import dislinkt.agentapp.dto.mapper.BasicUserRegistrationMapper;
 import dislinkt.agentapp.model.User;
 import dislinkt.agentapp.repository.RoleRepository;
@@ -23,6 +24,11 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(basicUserRegistration.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_CLIENT"));
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDTO getLoggedInUser(String email) {
+        return new UserDTO(userRepository.findByEmail(email));
     }
 
     @Override
