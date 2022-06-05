@@ -29,9 +29,13 @@ public class User implements Serializable, UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "connection_token")
+    private String connectionToken;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id")
     private Company company;
+
 
     @ManyToMany(targetEntity = Role.class, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
@@ -40,6 +44,7 @@ public class User implements Serializable, UserDetails {
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+        this.connectionToken = "";
     }
 
     @Override

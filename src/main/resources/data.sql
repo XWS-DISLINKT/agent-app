@@ -12,17 +12,23 @@ INSERT INTO companies (email, employees_number_range, industry, location, name, 
 
 
 --USERS
-INSERT INTO users (email, password) VALUES
-    ('admin@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy'),
-    ('client1@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy'),
-    ('client2@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy');
-INSERT INTO users (email, password, company_id) VALUES
-    ('owner@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', 1);
+INSERT INTO users (email, password, connection_token) VALUES
+    ('admin@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', ''),
+    ('client1@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '');
+INSERT INTO users (email, password, connection_token, company_id) VALUES
+    ('client2@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '', 3),
+    ('client3@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '', 4),
+    ('client4@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '', 5),
+    ('owner@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '5577006791947779410', 1),
+    ('owner2@gmail.com', '$2a$10$pJh4JIroHGMYkadZySbh9uHYTt4kuW2pMHlxd/Pdtw/RIFnClvpgy', '', 2);
 
 INSERT INTO users_roles (user_id, roles_id) VALUES (1, 1),
                                                    (2, 2),
                                                    (3, 2),
-                                                   (4, 3);
+                                                   (4, 2),
+                                                   (5, 2),
+                                                   (6, 3),
+                                                   (7, 3);
 
 
 INSERT INTO comments (id, rating, author_id, company_id, date_posted, title, content) VALUES

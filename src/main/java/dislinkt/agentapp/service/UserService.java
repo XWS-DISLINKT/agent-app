@@ -11,4 +11,5 @@ public interface UserService {
 
     User register(BasicUserRegistration basicUserRegistration);
 
+    UserDTO connectAccounts(String token, String userEmail);
 }

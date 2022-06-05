@@ -40,7 +40,8 @@ public class CompanyController {
         companyService.respondToRequest(companyApprovalRequestDTO);
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('ROLE_CLIENT')")
+    @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void registerCompany(@RequestBody Company company, Principal user) {
         companyService.registerCompany(company, user.getName());
     }

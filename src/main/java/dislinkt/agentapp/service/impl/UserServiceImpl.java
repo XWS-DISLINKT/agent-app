@@ -27,6 +27,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO connectAccounts(String token, String email) {
+        User user = userRepository.findByEmail(email);
+        user.setConnectionToken(token);
+        userRepository.save(user);
+        return new UserDTO(user);
+    }
+
+    @Override
     public UserDTO getLoggedInUser(String email) {
         return new UserDTO(userRepository.findByEmail(email));
     }

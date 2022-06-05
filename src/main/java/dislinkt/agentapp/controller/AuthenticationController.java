@@ -69,4 +69,10 @@ public class AuthenticationController {
             return null;
         return this.userService.getLoggedInUser(user.getName());
     }
+
+    @PreAuthorize("hasRole('ROLE_COMPANY_OWNER')")
+    @PostMapping(value = "/connect-accounts", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UserDTO connectAccounts(@RequestBody String token, Principal user) {
+        return userService.connectAccounts(token, user.getName());
+    }
 }

@@ -13,7 +13,7 @@ public class UserDTO {
     private String email;
     private int companyId;
     private String role;
-    //private String connectionToken;
+    private String connectionToken;
 
     public UserDTO(User user){
         id = user.getId();
@@ -22,5 +22,6 @@ public class UserDTO {
         if(user.getCompany() != null)
             companyId = user.getCompany().getId();
         role = user.getRoles().get(0).getName();
+        connectionToken = user.getConnectionToken();
     }
 }
