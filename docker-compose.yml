@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  agent-app:
+    container_name: agent-app
+    image: agent-app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - agent-app-db
+    networks:
+      - network
+
+  agent-app-db:
+    image: postgres
+    container_name: agent-app-db
+    restart: on-failure
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=agentapp
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
